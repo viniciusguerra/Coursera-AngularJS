@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- ng-app binds an element to an angular module -->
+<!-- in this case, the MyAngularApp module defined at app.js -->
+<html ng-app="MyAngularApp">
+	<head>
+		<meta charset="utf-8">
+		<!--angular.min.js has to appear first to be accessible at the following scripts-->
+		<script src="../angular.min.js"></script>
+		<script src="app.js"></script>
+
+		<title>Coursera AngularJS</title>
+	</head>
+	<body>
+		<h1>Vinícius' Coursera AngularJS SPA</h1>
+		<!-- ng-controller binds element to angular controller (ModelView) -->
+		<div ng-controller="MyFirstController">
+			<!-- {{}} allows display of scope properties -->
+			<p>{{directString}}</p>
+			<p>{{functionString()}}</p>
+
+			<p>
+				Output: {{inputString}}
+				<br />
+				<!-- ng-model binds data to a property in the scope of the active controller -->
+				Input: <input type="text" ng-model="inputString">
+			</p>
+		</div>
+	</body>
+</html>

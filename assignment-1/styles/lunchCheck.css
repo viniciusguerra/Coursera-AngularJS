@@ -1,0 +1,19 @@
+.message .Okay
+{
+	color: green;
+}
+
+.message .Error
+{
+	color: red;
+}
+
+.textbox.Okay
+{
+    border-color: green;
+}
+
+.textbox.Error
+{
+	border-color: red;
+}
