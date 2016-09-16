@@ -35,8 +35,7 @@
     <div ng-controller="ToBuyShoppingController as ToBuyCtrl" class="col-md-6">
      <h2>To Buy:</h2>
      <ul>
-      <!-- {{ condition ? true : false }} adds the of word if an unit is defined -->
-      <li ng-repeat="item in ToBuyCtrl.toBuy">Buy {{item.amount}} {{item.unit}} {{item.unit !== undefined ? "of" : "" }} {{item.name}} <button ng-click="ToBuyCtrl.addToBoughtList($index)" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+      <li ng-repeat="item in ToBuyCtrl.toBuy">{{item | ToBuy}}<button ng-click="ToBuyCtrl.addToBoughtList($index)" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
      </ul>
      <div ng-show="ToBuyCtrl.toBuy.length === 0" class="emptyMessage">Everything is bought!</div>
     </div>
@@ -45,7 +44,7 @@
     <div ng-controller="AlreadyBoughtShoppingController as AlreadyBoughtCtrl" class="col-md-6">
      <h2>Already Bought:</h2>
      <ul>
-       <li ng-repeat="item in AlreadyBoughtCtrl.alreadyBought">Bought {{item.amount}} {{item.unit}} {{item.unit !== undefined ? "of" : "" }} {{item.name}}</li>
+       <li ng-repeat="item in AlreadyBoughtCtrl.alreadyBought">{{ item | AlreadyBought }}</li>
      </ul>
      <div ng-hide="AlreadyBoughtCtrl.alreadyBought.length > 0" class="emptyMessage">Nothing bought yet.</div>
     </div>

@@ -4,8 +4,23 @@
 	angular.module('ShoppingListCheckOff', [])	
 	.controller('ToBuyShoppingController', ToBuyShoppingController)
 	.controller('AlreadyBoughtShoppingController', AlreadyBoughtShoppingController)
+	.filter('ToBuy', function(){return ToBuyFilter})
+	.filter('AlreadyBought', function(){return AlreadyBoughtFilter})
 	.provider('ShoppingListCheckOffService', ShoppingListCheckOffServiceProvider)
 	.config(Config);
+
+	function ToBuyFilter(item){
+		var output = 'Buy ' + item.amount + ' ' + (item.unit !== undefined ? item.unit + " of " : " ") + item.name;
+
+		return output;
+	}
+
+	function AlreadyBoughtFilter(item){
+		var output = 'Bought ' + item.amount + ' ' + (item.unit !== undefined ? item.unit + " of " : " ") + item.name;
+
+		return output;
+	}
+
 
 	Config.$inject = ['ShoppingListCheckOffServiceProvider'];
 	function Config(ShoppingListCheckOffServiceProvider)
@@ -51,7 +66,7 @@
 	}
 
 	function ShoppingListCheckOffService(toBuyInit){
-		//added the unit property to be able to test the ternary expression at html
+		//added the unit property to be able to test the ternary expression at filter
 		this.toBuy = toBuyInit;
 
 		this.alreadyBought = [];
